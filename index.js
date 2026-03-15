@@ -6,7 +6,11 @@ require("dotenv").config() // optional, for .env
 const app = express()
 
 // Middleware
-app.use(cors())
+app.use(cors({
+  origin: process.env.CLIENT_ORIGIN,
+  credentials: true,
+}));
+
 app.use(express.json())
 
 // MongoDB connection
@@ -18,7 +22,7 @@ mongoose.connect(MONGO_URI)
 
 // Test route
 app.get("/", (req, res) => {
-  res.send("NIKI API Server sRunning")
+  res.send("NIKI API Server is Running")
 })
 
 
@@ -32,7 +36,7 @@ const authRoutes = require("./routes/auth")
 app.use("/api/auth", authRoutes)
 
 // Start server
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8080
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`)
 })
