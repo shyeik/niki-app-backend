@@ -13,7 +13,7 @@ router.post("/register", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10)
     const newUser = new User({ name, email, password: hashedPassword })
     await newUser.save()
-    res.json({ message: "Admin registered" })
+    res.status(200).json({ message: "Admin registered" }) // only send once
   } catch (err) {
     res.status(500).json({ error: err.message })
   }
