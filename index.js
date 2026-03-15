@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
 
 // Users API
 const userRoutes = require("./routes/users")
-app.use("api/users", userRoutes)
+app.use("/api/users", userRoutes)
 
 // Auth API
 const authRoutes = require("./routes/auth")
