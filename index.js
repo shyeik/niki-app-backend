@@ -29,11 +29,11 @@ app.get("/", (req, res) => {
 
 // Users API
 const userRoutes = require("./routes/users")
-app.use("/api/users", userRoutes)
+app.use("api/users", userRoutes)
 
 // Auth API
 const authRoutes = require("./routes/auth")
-app.use("/api/auth", authRoutes)
+app.use("api/auth", authRoutes)
 
 // Start server
 const PORT = process.env.PORT || 8080
