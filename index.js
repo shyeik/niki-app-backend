@@ -33,7 +33,7 @@ app.use("/api/users", userRoutes)
 
 // Auth API
 const authRoutes = require("./routes/auth")
-app.use("api/auth", authRoutes)
+app.use("/api/auth", authRoutes)
 
 // Start server
 const PORT = process.env.PORT || 8080
