@@ -6,18 +6,16 @@ require("dotenv").config() // optional, for .env
 const app = express()
 
 // Middleware
-
-app.use(express.json())
-
 app.use(cors({
-  origin: process.env.CLIENT_ORIGIN, // e.g., https://niki-app.vercel.app
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  origin: ["http://localhost:3000", process.env.CLIENT_ORIGIN],
+  methods: ["GET","POST","PUT","DELETE","OPTIONS"],
   credentials: true,
 }));
 
-// This ensures preflight requests respond with 200 OK
 app.options("*", cors());
+
+app.use(express.json())
+
 // MongoDB connection
 const MONGO_URI = process.env.MONGO_URI
 
