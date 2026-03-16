@@ -5,15 +5,11 @@ require("dotenv").config() // optional, for .env
 
 const app = express()
 
-// CORS FIX
+// Middleware
 app.use(cors({
-  origin: process.env.CLIENT_ORIGIN, // your frontend
-  methods: ["GET","POST","PUT","DELETE","OPTIONS"],
-  allowedHeaders: ["Content-Type","Authorization"],
-  credentials: true
-}))
-
-app.options("*", cors()) // handle preflight requests
+  origin: process.env.CLIENT_ORIGIN,
+  credentials: true,
+}));
 
 app.use(express.json())
 
