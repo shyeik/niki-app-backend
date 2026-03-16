@@ -5,13 +5,16 @@ require("dotenv").config() // optional, for .env
 
 const app = express()
 
-// Middleware
+
+
+app.use(express.json())
+
 app.use(cors({
   origin: process.env.CLIENT_ORIGIN,
   credentials: true,
 }));
 
-app.use(express.json())
+app.options("*", cors())
 
 // MongoDB connection
 const MONGO_URI = process.env.MONGO_URI
